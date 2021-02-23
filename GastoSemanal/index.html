@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <style>
+        ul{
+            margin-top: 15px;
+        }
+        li{
+            border : 1px solid black;
+            border-radius: 5px;
+            padding: 15px;
+            display : flex;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+        .envio{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar is-primary">
+        <div class="navbar-brand container">
+            <figure>
+                <img src="https://static.thenounproject.com/png/823776-200.png" width="70" alt="logo">
+            </figure>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+
+        <div class="notification envio" id="notificacion">
+            <button class="delete"></button>
+            <p id="mensaje">
+
+            </p>
+        </div>
+
+        <div class="columns is-hcentered">
+            
+            <div class="column is-6">
+                <h1 class="title">Presupuesto de gasto Semanal</h1>
+                <form id="agregarGasto">
+
+                    <div class="field">
+                        <label for="gasto">Gasto</label>
+                        <div class="control">
+                            <input type="text" class="input" placeholder="Ingrese el asunto del gasto" id="gasto" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="cantidad">Cantidad</label>
+                        <div class="control">
+                            <input type="text" class="input" placeholder="Ingrese la cantidad del gasto" id="cantidad" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="field is-grouped is-grouped-centered">
+                        <p class="control">
+                            <button class="button is-success is-outlined" type="submit" id="botonEnviar">
+                                Enviar
+                            </button>
+                        </p>
+                        <p class="control">
+                            <button class="button is-dark is-outlined" type="reset">
+                                Limpiar
+                            </button>
+                        </p>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="column is-6" id="gastos">
+                <ul class="menu-list">
+                    
+                </ul>
+
+                <div class="notification is-info">
+                    Presupuesto : <span id="total"></span>
+                </div>
+                <div class="notification is-success">
+                    Restante : <span id="restante"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            (document.querySelectorAll('.notification .delete') || []).forEach(($delete)=>{
+                $notification = $delete.parentNode
+
+                $delete.addEventListener('click', () => {
+                    $notification.parentNode.removeChild($notification)
+                })
+            })
+        })
+    </script>
+
+</body>
+</html>
